@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Uploader</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <input type="file" id="fileInput">
+    <button onclick="uploadImage()">Upload</button>
+    <p id="message"></p>
+
+    <script>
+        async function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert("Please select an image to upload.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const response = await fetch('<YOUR_STATIC_WEB_APP_URL>', {
+                method: 'POST',
+                body: formData
+            });
+
+            document.getElementById('message').innerText = "Image uploaded successfully!";
+        }
+    </script>
+</body>
+</html>
