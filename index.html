@@ -1,32 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Image Uploader</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Image Uploader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload an Image</h1>
+    <h1>Welcome to Azure Image Uploader</h1>
+    <p>Upload an image, and it will be resized automatically!</p>
     <input type="file" id="fileInput">
     <button onclick="uploadImage()">Upload</button>
-    <p id="message"></p>
+    <p id="status"></p>
 
     <script>
         async function uploadImage() {
-            const fileInput = document.getElementById('fileInput');
+            const fileInput = document.getElementById("fileInput");
             if (fileInput.files.length === 0) {
-                alert("Please select an image to upload.");
+                alert("Please select a file!");
                 return;
             }
-
+            
             const file = fileInput.files[0];
             const formData = new FormData();
-            formData.append('file', file);
+            formData.append("file", file);
 
-            const response = await fetch('<YOUR_STATIC_WEB_APP_URL>', {
-                method: 'POST',
-                body: formData
-            });
+            document.getElementById("status").innerText = "Uploading...";
 
-            document.getElementById('message').innerText = "Image uploaded successfully!";
+            try {
+                // Replace with your actual API endpoint
+                const response = await fetch("preethuimageresize.azurewebsites.net", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    document.getElementById("status").innerText = "Upload successful!";
+                } else {
+                    document.getElementById("status").innerText = "Upload failed.";
+                }
+            } catch (error) {
+                document.getElementById("status").innerText = "Error uploading file.";
+            }
         }
     </script>
 </body>
