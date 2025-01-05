@@ -1,2 +1,4 @@
 pillow
+azure-functions
 azure-storage-blob
+
