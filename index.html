@@ -37,9 +37,8 @@
             document.getElementById("status").innerText = "Uploading...";
 
             try {
-                // Replace with your actual API endpoint
-                "https://preethufunctionapp.azurewebsites.net/api/BlobTriggerFunctionPreethu", {
-    method: "POST",
+                const response = await fetch("pimageresize.azurewebsites.net/api/UploadFile", {
+                    method: "POST",
                     body: formData
                 });
 
