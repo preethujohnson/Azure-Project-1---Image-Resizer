@@ -38,8 +38,8 @@
 
             try {
                 const response = await fetch("pimageresize.azurewebsites.net/api/UploadFile", {
-                    method: "POST",
-                    body: formData
+                    method: "GET",
+                
                 });
 
                 if (response.ok) {
