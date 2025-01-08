@@ -37,8 +37,11 @@
             document.getElementById("status").innerText = "Uploading...";
 
             try {
-                const response = await fetch("https://pimageresize.azurewebsites.net/api/HttpTrigger1", {
+                const response = await fetch("https://preethufunctionapp.azurewebsites.net/api/PreethuBlobTrigger", {
                     method: "POST",
+                    heaers:{
+                        'Access-Control-Allow-Origin':'*',
+                    }
                 body: {"name":"value"}
                 });
 
