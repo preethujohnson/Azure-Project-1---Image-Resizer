@@ -16,8 +16,8 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to Azure Image Uploader</h1>
-    <p>Upload an image, and it will be resized automatically!</p>
+    <h1>Welcome to Azure Image Resizer By Preethu</h1>
+    <p>Upload your image, and it will be resized automatically!</p>
     <input type="file" id="fileInput">
     <button onclick="uploadImage()">Upload</button>
     <p id="status"></p>
@@ -39,10 +39,7 @@
             try {
                 const response = await fetch("https://pimageresize.azurewebsites.net/api/HttpTrigger1", {
                     method: "POST",
-                    headers:{
-                        'Access-Control-Allow-Origin':'*',
-                    }
-                body: {"name":"value"}
+                    body: formData  
                 });
 
                 if (response.ok) {
