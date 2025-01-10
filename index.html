@@ -39,7 +39,8 @@
             try {
                 const response = await fetch("https://preethufunctionapp.azurewebsites.net/api/preethuhttpfunction", {
                     method: "POST",
-                    body: formData  
+                    body: formData,
+                    mode: 'cors' ,
                 });
 
                 if (response.ok) {
