@@ -37,7 +37,7 @@
             document.getElementById("status").innerText = "Uploading...";
 
             try {
-                const response = await fetch("https://pimageresize.azurewebsites.net/api/HttpTrigger1?", {
+                const response = await fetch("https://pimageresize.azurewebsites.net/api/HelloWorld?", {
                     method: "POST",
                     body: formData,
                     mode: 'no-cors' ,
